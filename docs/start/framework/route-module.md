@@ -309,9 +309,33 @@ export default function Root() {
 
 ## `meta`
 
-Route meta defines meta tags to be rendered in the `<head>` of the document.
+Route meta defines meta tags to be rendered in the `<Meta />` component, usually placed in the `<head>`.
+
+<docs-warning>
+
+Since React 19, [using the built-in `<meta>` element](https://react.dev/reference/react-dom/components/meta) is recommended over the use of the route module's `meta` export.
+
+Here is an example of how to use it and the `<title>` element:
 
 ```tsx
+export default function MyRoute() {
+  return (
+    <div>
+      <title>Very cool app</title>
+      <meta property="og:title" content="Very cool app" />
+      <meta
+        name="description"
+        content="This app is the best"
+      />
+      {/* The rest of your route content... */}
+    </div>
+  );
+}
+```
+
+</docs-warning>
+
+```tsx filename=app/product.tsx
 export function meta() {
   return [
     { title: "Very cool app" },
@@ -327,9 +351,7 @@ export function meta() {
 }
 ```
 
-All routes' meta will be aggregated and rendered through the `<Meta />` component, usually rendered in your app root:
-
-```tsx
+```tsx filename=app/root.tsx
 import { Meta } from "react-router";
 
 export default function Root() {
@@ -344,6 +366,8 @@ export default function Root() {
   );
 }
 ```
+
+The meta of the last matching route is used, allowing you to override parent routes' meta. It's important to note that the entire meta descriptor array is replaced, not merged. This gives you the flexibility to build your own meta composition logic across pages at different levels.
 
 **See also**
 
