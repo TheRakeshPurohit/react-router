@@ -1,5 +1,24 @@
 # `@react-router/dev`
 
+## 7.9.2
+
+### Patch Changes
+
+- Fix preset future flags being ignored during config resolution ([#14369](https://github.com/remix-run/react-router/pull/14369))
+
+  Fixes a bug where future flags defined by presets were completely ignored. The config resolution was incorrectly reading from `reactRouterUserConfig.future` instead of the merged `userAndPresetConfigs.future`, causing all preset-defined future flags to be lost.
+
+  This fix ensures presets can properly enable experimental features as intended by the preset system design.
+
+- Add unstable support for RSC Framework Mode ([#14336](https://github.com/remix-run/react-router/pull/14336))
+
+- Switch internal vite plugin Response logic to use `@remix-run/node-fetch-server` ([#13927](https://github.com/remix-run/react-router/pull/13927))
+
+- Updated dependencies:
+  - `react-router@7.9.2`
+  - `@react-router/serve@7.9.2`
+  - `@react-router/node@7.9.2`
+
 ## 7.9.1
 
 ### Patch Changes

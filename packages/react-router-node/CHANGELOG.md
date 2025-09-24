@@ -1,5 +1,12 @@
 # `@react-router/node`
 
+## 7.9.2
+
+### Patch Changes
+
+- Updated dependencies:
+  - `react-router@7.9.2`
+
 ## 7.9.1
 
 ### Patch Changes
